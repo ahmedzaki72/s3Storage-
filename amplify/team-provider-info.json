@@ -1,0 +1,19 @@
+{
+    "test": {
+        "awscloudformation": {
+            "AuthRoleName": "s3test-20190317132109-authRole",
+            "UnauthRoleArn": "arn:aws:iam::050543387869:role/s3test-20190317132109-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::050543387869:role/s3test-20190317132109-authRole",
+            "Region": "eu-west-1",
+            "DeploymentBucketName": "s3test-20190317132109-deployment",
+            "UnauthRoleName": "s3test-20190317132109-unauthRole",
+            "StackName": "s3test-20190317132109",
+            "StackId": "arn:aws:cloudformation:eu-west-1:050543387869:stack/s3test-20190317132109/c560b090-48a6-11e9-8546-065d51fe97c8"
+        },
+        "categories": {
+            "auth": {
+                "cognito21ce5550": {}
+            }
+        }
+    }
+}

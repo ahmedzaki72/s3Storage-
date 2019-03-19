@@ -1,0 +1,51 @@
+{
+	"providers": {
+		"awscloudformation": {
+			"AuthRoleName": "s3test-20190317132109-authRole",
+			"UnauthRoleArn": "arn:aws:iam::050543387869:role/s3test-20190317132109-unauthRole",
+			"AuthRoleArn": "arn:aws:iam::050543387869:role/s3test-20190317132109-authRole",
+			"Region": "eu-west-1",
+			"DeploymentBucketName": "s3test-20190317132109-deployment",
+			"UnauthRoleName": "s3test-20190317132109-unauthRole",
+			"StackName": "s3test-20190317132109",
+			"StackId": "arn:aws:cloudformation:eu-west-1:050543387869:stack/s3test-20190317132109/c560b090-48a6-11e9-8546-065d51fe97c8"
+		}
+	},
+	"auth": {
+		"cognito21ce5550": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/s3test-20190317132109-deployment/amplify-cfn-templates/auth/cognito21ce5550-cloudformation-template.yml",
+				"logicalId": "authcognito21ce5550"
+			},
+			"lastPushTimeStamp": "2019-03-17T11:26:57.217Z",
+			"output": {
+				"AppClientSecret": "1gnipi00bk3bo9h8jvabf0m7erefl1kk3duobofvca9ut2vm16p6",
+				"UserPoolId": "eu-west-1_mqPF4befk",
+				"AppClientIDWeb": "1vppr8lcstcf2m6t4sig60k0kj",
+				"AppClientID": "22pd4m0io8vqeg11qm4i4iknp5",
+				"IdentityPoolId": "eu-west-1:18a4462c-c2ee-415b-beb6-c5339f8f07c0",
+				"IdentityPoolName": "cognito21ce5550_identitypool_21ce5550__test",
+				"UserPoolName": "cognito21ce5550_userpool_21ce5550"
+			},
+			"lastPushDirHash": "ggx35hG/mzv3j0/2dxW6nwUtKcM="
+		}
+	},
+	"storage": {
+		"s3666d61df": {
+			"service": "S3",
+			"providerPlugin": "awscloudformation",
+			"providerMetadata": {
+				"s3TemplateURL": "https://s3.amazonaws.com/s3test-20190317132109-deployment/amplify-cfn-templates/storage/s3-cloudformation-template.json",
+				"logicalId": "storages3666d61df"
+			},
+			"lastPushTimeStamp": "2019-03-17T11:26:57.217Z",
+			"output": {
+				"BucketName": "s3test590e3389334b4b2a93536416dc02d388-test",
+				"Region": "eu-west-1"
+			},
+			"lastPushDirHash": "jh+c/lhWaZ8W/kNPTiCUjjwVT4U="
+		}
+	}
+}
