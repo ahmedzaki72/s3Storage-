@@ -21,7 +21,7 @@ Amplify.configure(config)
 export default class ImageUploadS3 extends React.Component {
 	state = {
 		image: null,
-		allImages: []
+		allImages: [],
 	}
 
 	// First of all fetch all public images from S3
@@ -29,11 +29,26 @@ export default class ImageUploadS3 extends React.Component {
 		await this.fetchImages('images/', { level: "public" }) // (path, access)
 		this.flatListRef.scrollToOffset({ animated: true, offset: 0 });
 	}
-
+	urlToBlob=(url)=> {
+		return new Promise((resolve, reject) => {
+			var xhr = new XMLHttpRequest();
+			xhr.onerror = reject;
+			xhr.onreadystatechange = () => {
+				if (xhr.readyState === 4) {
+					resolve(xhr.response);
+				}
+			};
+			xhr.open('GET', url);
+			xhr.responseType = 'blob'; // convert type
+			xhr.send();
+		})
+	  }
+	
 	// Upload an image to S3
 	uploadImageToS3 = async uri => {
-		const response = await fetch(uri)
-		const blob = await response.blob() // format the data for images 
+		 //const response = await fetch(uri)
+         const blob = await this.urlToBlob(uri)
+		//const blob = await response.blob() // format the data for images 
 		const folder = 'images'
 		// generate a unique random name for every single image 'fixed length'
 		const fileName = Math.random().toString(18).slice(3).substr(0, 10) + '.jpeg' 
@@ -115,7 +130,7 @@ export default class ImageUploadS3 extends React.Component {
 	// Remove Image from S3. Tobe moved to the contest page 
 	removeImageFromS3 = async (name) => {
 		await Storage.remove(name)
-			.then(result => console.log('Deleted', result))
+			.then(result => 'Deleted', result)
 			.catch(err => console.log(err));
 	}
 

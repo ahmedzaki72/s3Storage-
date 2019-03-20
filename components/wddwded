@@ -1,0 +1,35 @@
+urlToBlob=(url)=> {
+    return new Promise((resolve, reject) => {
+        var xhr = new XMLHttpRequest();
+        xhr.onerror = reject;
+        xhr.onreadystatechange = () => {
+            if (xhr.readyState === 4) {
+                resolve(xhr.response);
+            }
+        };
+        xhr.open('GET', url);
+        xhr.responseType = 'blob'; // convert type
+        xhr.send();
+    })
+  }
+
+
+
+  // Upload an image to S3
+	uploadImageToS3 = async (uri) => {
+		const response = await fetch(uri)
+		const blob = await response.blob() // format the data for images 
+		const folder = 'images'
+		// generate a unique random name for every single image 'fixed length'
+		const fileName = Math.random().toString(18).slice(3).substr(0, 10) + '.jpeg' 
+		await Storage.put(folder + '/' + fileName, blob, {
+			contentType: 'image/jpeg',
+			level: 'public'
+		})
+			.then(() => {
+				// every time a new image is added, we call all the items again
+				this.fetchImages('images/', { level: "public" })
+				//console.log('this is fetch data',this.fetchImages('images/', {level : "public"}))
+			})
+			.catch(err => console.log(err))
+	}
